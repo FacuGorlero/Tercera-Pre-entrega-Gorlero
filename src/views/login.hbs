@@ -1,0 +1,31 @@
+<main>
+  <div class="loginContainer">
+    <h3>LOG IN</h3>
+    <div class="horizontalBar">
+      <p></p>
+      <form action="/api/sessions/login" method="post" id="loginForm">
+      {{!-- <form id="loginForm"> --}}
+        <div class="formContainer">
+          <label for="email">Username (email)</label>
+          <input type="email" placeholder="Enter Username" value="email@prueba.com" name="email" autocomplete="email" id="loginemail"
+            required>
+
+          <label for="password">Password</label>
+          <input type="password" placeholder="Enter Password" value="123456" name="password" id="loginpassword" required>
+
+          <button type="submit">Login</button>
+          {{!-- <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label> --}}
+        </div>
+      </form>
+      <a class="aLogIn" href="/api/session/github">GitHub <i class='bx bxl-github'></i></a>
+      <p></p>
+    </div>
+    <p class="" id="answer">{{answer}}</p>
+    <br>
+    <a class="link" href="/register">Registrarse</a>
+  </div>
+</main>
+
+<script src="/js/login.js"></script>

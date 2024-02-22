@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{tittle}}</title>
+  </head>
+  <body>
+    <header>
+       <div>
+      {{#if userName}}
+        <a href="/user" class="userName">Bienvenido {{userName}}</a>
+        <p class="userRole">{{userRole}}</p>
+        <a id="logOut" href="">log out</a>
+      {{/if}}
+    </div>
+      <nav class="nav">
+      <div class="navDiv">
+        <ul>
+          {{#unless userName}}<li> <a href="/">Inicio</a></li>{{/unless}}
+          <li> <a href="/products">Productos</a></li>
+          {{#if accessPremium}}<li> <a href="/realTimeProducts">Tiempo Real</a></li>{{/if}}
+          {{#if userName}}<li> <a href="/chat">Chat</a></li>{{/if}}
+          {{#if userName}}{{#if development}}<li> <a href="/api/session/current">CURRENT</a></li>{{/if}}{{/if}}
+        </ul>
+      </div>
+      <div class="navDiv">
+        <ul>
+          {{#if userName}}<li> <a href="/cart">Carrito</a></li>{{/if}}
+          {{#unless userName}}<li> <a href="/register">Registrarse</a></li>{{/unless}}
+        </ul>
+      </div>
+    </nav>
+    </header>
+    {{{body}}}
+     {{#if userName}}<script src="/src/public/js/logout.js"></script>{{/if}}
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
