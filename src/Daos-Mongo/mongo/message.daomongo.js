@@ -15,4 +15,4 @@ class MessageDaoMongo {
   clear = async() => await this.model.deleteMany({})
 }
 // Exporta el DAO para su uso en otros archivos
-exports.MessageMongo = MessageDaoMongo;
+module.exports = MessageDaoMongo;

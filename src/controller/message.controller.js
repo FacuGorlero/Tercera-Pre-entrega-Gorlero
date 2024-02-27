@@ -1,8 +1,8 @@
-const {MessageMongo} = require('../Daos-Mongo/mongo/message.daomongo');
+const {messageService} = require('../repositories/services');
 
 class MessagesController {
     constructor() {
-      this.service = new MessageMongo
+      this.service = messageService
     };
   
     clearMessages = async (req, res) => {

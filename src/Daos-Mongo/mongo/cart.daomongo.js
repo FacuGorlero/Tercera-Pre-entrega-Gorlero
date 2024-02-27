@@ -2,7 +2,6 @@ const {CustomError} = require('../../utils/error.js')
 const { cartModel } = require('./Models/carts.model.js');  // Importa el modelo de carrito
 const { ProductMongo } = require('./products.daomongo.js');  // Importa la clase ProductMongo
 
-const productsService = new ProductMongo();
 
 class CartDaoMongo {
   constructor() {
@@ -61,4 +60,4 @@ class CartDaoMongo {
     return await this.model.findById(cid);
   }
 }
-exports.CartMongo = CartDaoMongo;
+module.exports = CartDaoMongo;

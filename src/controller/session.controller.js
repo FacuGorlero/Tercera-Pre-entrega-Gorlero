@@ -1,11 +1,11 @@
 const {configObject} = require("../config/index.js");
-const { UserMongo } = require("../Daos-Mongo/mongo/user.daomongo.js");
+const {userService}  = require("../repositories/services.js");
 const {createToken} = require("../utils/jwt.js");
 const {CustomError} = require("../utils/error.js");
 const { createHash, isValidPassword } = require("../utils/hashPassword.js");
 const {validateFields} = require("../utils//validatefields.js");
 
-const userService = new UserMongo();
+const usersService = userService;
 
 class SessionsController {
   constructor() {
@@ -30,11 +30,11 @@ class SessionsController {
       userData.password = createHash(userData.password);
 
       // Verificar si ya existe un usuario con el mismo email
-      const userFound = await userService.getUserByMail(userData.email);
+      const userFound = await usersService.getUserByMail(userData.email);
       if (userFound) throw new CustomError(`Ya existe un usuario con ese email. Pruebe con otro`);
 
       // Crear usuario y renderizar página de login con mensaje de éxito
-      await userService.createUser(userData);
+      await usersService.createUser(userData);
       res.renderPage("login", "Login", { answer: 'Se ha registrado Correctamente' });
 
     } catch (error) {
@@ -60,7 +60,7 @@ class SessionsController {
       }
 
       // Verificar si el usuario existe y la contraseña es válida
-      const userFound = await userService.getUserByMail(userData.email);
+      const userFound = await usersService.getUserByMail(userData.email);
       if (!userFound || !isValidPassword(userData.password, userFound)) {
         throw new CustomError(`Email o contraseña equivocado`);
       }
@@ -91,7 +91,7 @@ class SessionsController {
       }
 
       // Verificar si el usuario existe y la contraseña es válida
-      const userFound = await userService.getUserByMail(userData.email);
+      const userFound = await usersService.getUserByMail(userData.email);
       if (!userFound || !userFound._id || isValidPassword(createHash(userData.password), userFound)) {
 
         throw new CustomError(`Email o contraseña equivocado`);

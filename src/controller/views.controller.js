@@ -1,10 +1,10 @@
 // Importar configuraciones y módulos necesarios
 const {configObject} = require("../config/index.js");
-const { ProductMongo } = require("../Daos-Mongo/mongo/products.daomongo.js");
+const ProductMongo  = require("../Daos-Mongo/mongo/products.daomongo.js");
 const {CustomError} = require("../utils/error.js");
 
 // Crear una instancia de ProductClass para interactuar con productos
-const productsService = new ProductMongo();
+const productViewService = new ProductMongo();
 
 // Definir la clase ViewsController
 class ViewsController {
@@ -90,7 +90,7 @@ class ViewsController {
         },
         arrays: {
           product,
-          category: await productsService.getCategorys(),
+          category: await productViewService.getCategorys(),
         },
         pageControl: {
           page: data.data.page,

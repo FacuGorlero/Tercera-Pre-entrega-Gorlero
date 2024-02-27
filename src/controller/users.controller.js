@@ -1,11 +1,11 @@
 // Importar la clase UserClass del módulo dao/index.js
-const { UserMongo } = require("../Daos-Mongo/mongo/user.daomongo");
+const  {userService}  = require("../repositories/services");
 
 // Definir la clase UsersController
 class UsersController {
   // Constructor que inicializa el servicio con una instancia de UserClass
   constructor() {
-    this.service = new UserMongo();
+    this.service = userService;
   }
 
   // Método para obtener datos de usuario por ID

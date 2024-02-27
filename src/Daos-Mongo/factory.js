@@ -4,6 +4,8 @@ let UserDao
 let ProductDao
 let CartDao
 let MessageDao
+let ProductFile
+let CartFile
 
 console.log("Persistance Factory: ", configObject.persistence)
 switch (configObject.persistence){
@@ -11,8 +13,8 @@ switch (configObject.persistence){
         const UserDaoMongo = require('./mongo/user.daomongo.js');
         UserDao = UserDaoMongo
 
-        const ProductDaoMongo = require('./mongo/product.daomongo.js');
-        ProductDao =  ProductDaoMongo
+        const ProductMongo = require('./mongo/products.daomongo.js');
+        ProductDao =  ProductMongo
 
         const CartDaoMongo = require('./mongo/cart.daomongo.js')
         CartDao =  CartDaoMongo
@@ -23,10 +25,10 @@ switch (configObject.persistence){
 
     case 'FILE':
         const ProductFileManager = require('./file/ProductManager.js')
-        ProductDao = ProductFileManager
+        ProductFile = ProductFileManager
 
         const CartFileManager = require('./file/CartManager.js')
-        CartDao = CartFileManager
+        CartFile = CartFileManager
     
         break;
 
@@ -41,5 +43,8 @@ module.exports = {
     UserDao,
     ProductDao,
     CartDao,
-    MessageDao
+    MessageDao,
+    ProductFile,
+    CartFile
+
 }

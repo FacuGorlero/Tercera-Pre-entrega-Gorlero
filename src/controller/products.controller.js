@@ -1,4 +1,5 @@
-const { ProductMongo} = require('../Daos-Mongo/mongo/products.daomongo');
+
+const {productService} = require('../repositories/services');
 const {convertSort, convertAvailability, checkCategory } = require('../helper/mongohelpers');
 const {validateFields} = require('../utils/validatefields');
 
@@ -6,7 +7,7 @@ const {validateFields} = require('../utils/validatefields');
 class ProductsController {
   constructor() {
     // Inicializa el controlador con una instancia del servicio ProductClass
-    this.service = new ProductMongo();
+    this.service = productService;
   }
 
   // Obtiene una lista de productos según los parámetros de consulta proporcionados

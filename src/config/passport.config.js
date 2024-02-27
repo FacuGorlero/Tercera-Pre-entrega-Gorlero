@@ -2,11 +2,11 @@ const {configObject} = require('./index.js');
 const passport = require('passport');
 const jwt = require('passport-jwt');
 const GitHubStrategy = require('passport-github2');
-const {UserMongo} = require('../Daos-Mongo/mongo/user.daomongo.js');
+const {userService} = require('../repositories/services.js');
 
 const JWTStrategy = jwt.Strategy;
 const ExtractJWT = jwt.ExtractJwt;
-const userService = new UserMongo()
+const usersService = userService;
 console.log(configObject)
 
 exports.initializePassport = () => {
@@ -49,7 +49,7 @@ passport.use("jwt", new JWTStrategy(
       console.log(profile);
 
       // Verificar si el usuario ya existe en la base de datos
-      let user = await userService.getUserByMail({ email: profile._json.email });
+      let user = await usersService.getUserByMail({ email: profile._json.email });
 
       if (!user) {
         // Si no existe, crear un nuevo usuario con información de GitHub
@@ -60,7 +60,7 @@ passport.use("jwt", new JWTStrategy(
           password: '123456' // Contraseña temporal, ya que GitHub no proporciona contraseñas
         };
 
-        let result = await userService.createUser(userNew);
+        let result = await usersService.createUser(userNew);
         return done(null, result);
       }
 

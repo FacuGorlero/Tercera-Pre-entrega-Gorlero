@@ -1,5 +1,5 @@
 const { userModel } = require("./Models/user.model");
-const {CartMongo} = require("./cart.daomongo.js");
+const CartMongo = require("./cart.daomongo.js");
 
 const carts = new CartMongo();
 
@@ -22,4 +22,4 @@ class UserDaoMongo {
     delete = async (uid) => await this.model.findOneAndDelete({_id: uid})
   }
 
-exports.UserMongo = UserDaoMongo
+module.exports = UserDaoMongo

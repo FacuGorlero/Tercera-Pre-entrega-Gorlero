@@ -1,5 +1,5 @@
 document.querySelector('#logOut').addEventListener('click', async () => {
-    await fetch("/api/sessions/logout")
+    await fetch("/api/session/logout")
     
     window.location.href = "/";
   })

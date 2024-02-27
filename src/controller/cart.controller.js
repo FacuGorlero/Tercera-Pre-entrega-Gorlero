@@ -1,12 +1,12 @@
-const {CartMongo} = require ('../Daos-Mongo/mongo/cart.daomongo')
-const {ProductMongo} = require ('../Daos-Mongo/mongo/products.daomongo')
+const {cartService} = require ('../repositories/services')
+const {productService} = require ('../repositories/services') 
 
-const productsService = new ProductMongo()
+const productsService = productService
 
 class CartsController {
     // Constructor: inicializa el controlador con una instancia de CartClass
     constructor() {
-      this.service = new CartMongo();
+      this.service = cartService;
     }
   
     // Método para obtener todos los carritos

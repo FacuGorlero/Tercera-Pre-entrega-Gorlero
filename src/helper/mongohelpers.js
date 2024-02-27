@@ -1,4 +1,4 @@
-const { ProductMongo} = require('../Daos-Mongo/mongo/products.daomongo');
+const ProductMongo = require('../Daos-Mongo/mongo/products.daomongo');
 
 // Se crea una instancia del servicio ProductClass para acceder a las operaciones relacionadas con los productos
 const productService = new ProductMongo();

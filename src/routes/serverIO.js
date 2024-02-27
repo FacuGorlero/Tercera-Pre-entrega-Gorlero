@@ -1,6 +1,6 @@
 const { Server } = require('socket.io');
-const { MessageMongo } = require('../Daos-Mongo/mongo/message.daomongo');
-const { ProductMongo } = require('../Daos-Mongo/mongo/products.daomongo.js');
+const  {messageService}  = require('../repositories/services.js');
+const  {productService}  = require('../repositories/services.js');
 const {CustomError} = require ('../utils/error.js')
    
 Server
@@ -8,8 +8,8 @@ module.exports = function (server) {
 
   const io = new Server(server)
 
-  const products = new ProductMongo();
-  const messages = new MessageMongo();
+  const products = productService;
+  const messages = messageService;
 
   io.on('connection', ios => {
     //console.log("Nuevo cliente conectado");

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const form = document.querySelector("#loginForm");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  let resp = await fetch("/api/sessions/login", {
+  let resp = await fetch("/api/session/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
